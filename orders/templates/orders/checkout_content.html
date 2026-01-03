@@ -20,7 +20,7 @@
 
                 <!-- Contact Information -->
                 <div class="bg-white p-6">
-                    <h2 class="text-lg font-bold text-black mb-4">Contact Information</h2>
+                    <h2 class="text-lg font-bold text-black mb-4">Контактная информация</h2>
                     
                     <form method="post" id="order-form" hx-post="{% url 'orders:checkout' %}" hx-target="#main-content" hx-swap="outerHTML">
                         {% csrf_token %}
@@ -35,17 +35,17 @@
                                 </div>
                                 <label class="flex items-center space-x-2 cursor-pointer">
                                     <input type="checkbox" name="newsletter" class="h-4 w-4 text-black border-black focus:ring-0">
-                                    <span class="text-sm text-black">Send me news and offers</span>
+                                    <span class="text-sm text-black">Присылайте мне новости и предложения.</span>
                                 </label>
                             </div>
                         </div>
                     
                         <!-- Shipping Address -->
                         <div class="bg-white p-6">
-                            <h2 class="text-lg font-bold text-black mb-4">Shipping Address</h2>
+                            <h2 class="text-lg font-bold text-black mb-4">Адрес доставки</h2>
                             <div class="space-y-4">
                                 <div>
-                                    <label for="{{ form.country.id_for_label }}" class="block text-sm font-medium text-black mb-1">Country/Region</label>
+                                    <label for="{{ form.country.id_for_label }}" class="block text-sm font-medium text-black mb-1">Страна/Регион</label>
                                     {{ form.country }}
                                     {% if form.country.errors %}
                                         <div class="text-red-500 text-sm mt-1">{{ form.country.errors }}</div>
@@ -53,14 +53,14 @@
                                 </div>
                                 <div class="grid grid-cols-2 gap-4">
                                     <div>
-                                        <label for="{{ form.first_name.id_for_label }}" class="block text-sm font-medium text-black mb-1">First Name</label>
+                                        <label for="{{ form.first_name.id_for_label }}" class="block text-sm font-medium text-black mb-1">Имя</label>
                                         {{ form.first_name }}
                                         {% if form.first_name.errors %}
                                             <div class="text-red-500 text-sm mt-1">{{ form.first_name.errors }}</div>
                                         {% endif %}
                                     </div>
                                     <div>
-                                        <label for="{{ form.last_name.id_for_label }}" class="block text-sm font-medium text-black mb-1">Last Name</label>
+                                        <label for="{{ form.last_name.id_for_label }}" class="block text-sm font-medium text-black mb-1">Фамилия</label>
                                         {{ form.last_name }}
                                         {% if form.last_name.errors %}
                                             <div class="text-red-500 text-sm mt-1">{{ form.last_name.errors }}</div>
@@ -68,7 +68,7 @@
                                     </div>
                                 </div>
                                 <div class="relative">
-                                    <label for="{{ form.address1.id_for_label }}" class="block text-sm font-medium text-black mb-1">Address</label>
+                                    <label for="{{ form.address1.id_for_label }}" class="block text-sm font-medium text-black mb-1">Адрес</label>
                                     {{ form.address1 }}
                                     {% if form.address1.errors %}
                                         <div class="text-red-500 text-sm mt-1">{{ form.address1.errors }}</div>
@@ -80,7 +80,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <label for="{{ form.address2.id_for_label }}" class="block text-sm font-medium text-black mb-1">Apartment, suite, etc. (optional)</label>
+                                    <label for="{{ form.address2.id_for_label }}" class="block text-sm font-medium text-black mb-1">Квартира, этаж и т. д. (по желанию)</label>
                                     {{ form.address2 }}
                                     {% if form.address2.errors %}
                                         <div class="text-red-500 text-sm mt-1">{{ form.address2.errors }}</div>
@@ -88,21 +88,21 @@
                                 </div>
                                 <div class="grid grid-cols-3 gap-4">
                                     <div>
-                                        <label for="{{ form.city.id_for_label }}" class="block text-sm font-medium text-black mb-1">City</label>
+                                        <label for="{{ form.city.id_for_label }}" class="block text-sm font-medium text-black mb-1">Город</label>
                                         {{ form.city }}
                                         {% if form.city.errors %}
                                             <div class="text-red-500 text-sm mt-1">{{ form.city.errors }}</div>
                                         {% endif %}
                                     </div>
                                     <div>
-                                        <label for="{{ form.province.id_for_label }}" class="block text-sm font-medium text-black mb-1">State/Province</label>
+                                        <label for="{{ form.province.id_for_label }}" class="block text-sm font-medium text-black mb-1">Область/Край</label>
                                         {{ form.province }}
                                         {% if form.province.errors %}
                                             <div class="text-red-500 text-sm mt-1">{{ form.province.errors }}</div>
                                         {% endif %}
                                     </div>
                                     <div>
-                                        <label for="{{ form.postal_code.id_for_label }}" class="block text-sm font-medium text-black mb-1">Postal Code</label>
+                                        <label for="{{ form.postal_code.id_for_label }}" class="block text-sm font-medium text-black mb-1">Почтовый индекс</label>
                                         {{ form.postal_code }}
                                         {% if form.postal_code.errors %}
                                             <div class="text-red-500 text-sm mt-1">{{ form.postal_code.errors }}</div>
@@ -110,7 +110,7 @@
                                     </div>
                                 </div>
                                 <div class="relative">
-                                    <label for="{{ form.phone.id_for_label }}" class="block text-sm font-medium text-black mb-1">Phone</label>
+                                    <label for="{{ form.phone.id_for_label }}" class="block text-sm font-medium text-black mb-1">Телефон</label>
                                     {{ form.phone }}
                                     {% if form.phone.errors %}
                                         <div class="text-red-500 text-sm mt-1">{{ form.phone.errors }}</div>
@@ -124,7 +124,7 @@
                                 <div class="space-y-3">
                                     <label class="flex items-center space-x-2 cursor-pointer">
                                         <input type="checkbox" name="save_info" class="h-4 w-4 text-black border-black focus:ring-0">
-                                        <span class="text-sm text-black">Save information for next time</span>
+                                        <span class="text-sm text-black">Сохраните эту информацию для следующего раза</span>
                                     </label>
                                 </div>
                             </div>
@@ -154,7 +154,7 @@
 
                 <!-- Refund Policy -->
                 <div class="text-center">
-                    <a href="#" class="text-sm text-gray-600 underline hover:text-gray-800">Refund Policy</a>
+                    <a href="#" class="text-sm text-gray-600 underline hover:text-gray-800">Политика возврата средств</a>
                 </div>
             </div>
         </div>
@@ -188,7 +188,7 @@
                 
                 <div class="flex justify-between text-sm">
                     <span>Shipping</span>
-                    <span class="text-gray-600">Calculated at next step</span>
+                    <span class="text-gray-600">Рассчитывается на следующем шаге/span>
                 </div>
                 
                 <div class="flex justify-between text-lg font-medium pt-3 border-t">
