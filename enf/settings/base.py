@@ -80,6 +80,13 @@ STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+FILE_UPLOAD_CONTENT_TYPES = [
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+    "image/avif",
+]
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.CustomUser'

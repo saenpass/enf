@@ -12,9 +12,9 @@
                            hx-get="{% url 'main:index' %}" 
                            hx-target="#main-content" 
                            hx-push-url="true"
-                           class="hover:text-gray-900">HOME</a>
+                           class="hover:text-gray-900">ГЛАВНАЯ</a>
                         <span class="mx-2">/</span>
-                        <span class="font-medium">CHECKOUT</span>
+                        <span class="font-medium">КАССА</span>
                     </nav>
                 </div>
 
@@ -138,7 +138,7 @@
                                     value="create_order" 
                                     class="w-full bg-black text-white py-4 px-6 font-bold hover:bg-gray-800 transition-colors payment-button"
                                     onclick="document.getElementById('payment_provider').value='stripe'">
-                                Pay with Stripe
+                                    Оплата через Stripe
                             </button>
                             <button type="submit" 
                                     form="order-form"
@@ -146,7 +146,7 @@
                                     value="create_order" 
                                     class="w-full bg-black text-white py-4 px-6 font-bold hover:bg-gray-800 transition-colors payment-button"
                                     onclick="document.getElementById('payment_provider').value='heleket'">
-                                Pay with Heleket
+                                    Оплата через Heleket
                             </button>
                             <input type="hidden" name="payment_provider" id="payment_provider">
                         </div>
@@ -170,7 +170,7 @@
                         </div>
                         <div class="flex-1">
                             <h3 class="font-medium text-sm">{{ item.product.name }}</h3>
-                            <p class="text-xs text-gray-600">{{ item.product_size.size.name }}</p>
+                            <p class="text-xs text-gray-600">Размер: {{ item.product_size.size.name }}</p>
                         </div>
                         <div class="text-right">
                             <span class="font-medium">€{{ item.product.price|floatformat:2 }}</span>
@@ -182,17 +182,17 @@
             <!-- Order Summary -->
             <div id="order-summary" class="space-y-3 border-t pt-4">
                 <div class="flex justify-between text-sm">
-                    <span>Subtotal • {{ cart.total_items }} item{{ cart.total_items|pluralize }}</span>
+                    <span>Всего • {{ cart.total_items }} шт. на сумму:{{ cart.total_items|pluralize }}</span>
                     <span>€{{ total_price|floatformat:2 }}</span>
                 </div>
                 
                 <div class="flex justify-between text-sm">
-                    <span>Shipping</span>
-                    <span class="text-gray-600">Рассчитывается на следующем шаге/span>
+                    <span>Ваша итоговая стоимость:</span>
+                    <span class="text-gray-600">Рассчитывается на следующем шаге</span>
                 </div>
                 
                 <div class="flex justify-between text-lg font-medium pt-3 border-t">
-                    <span>Total</span>
+                    <span>Итого:</span>
                     <div class="text-right">
                         <span class="text-sm text-gray-600">EUR </span>
                         <span>€{{ total_price|floatformat:2 }}</span>

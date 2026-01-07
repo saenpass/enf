@@ -4,20 +4,23 @@ from django.utils.html import strip_tags
 
 class OrderForm(forms.Form):
     first_name = forms.CharField(
+        label='Имя',
         max_length=50,
         widget=forms.TextInput(attrs={
             'class': 'w-full px-4 py-3 border border-black rounded-none text-black placeholder-gray-500 focus:outline-none focus:border-black',
-            'placeholder': 'First Name'
+            'placeholder': 'Имя'
         })
     )
     last_name = forms.CharField(
+        label='Фамилия',
         max_length=50,
         widget=forms.TextInput(attrs={
             'class': 'w-full px-4 py-3 border border-black rounded-none text-black placeholder-gray-500 focus:outline-none focus:border-black',
-            'placeholder': 'Last Name'
+            'placeholder': 'Фамилия'
         })
     )
     email = forms.EmailField(
+        label='Email',
         widget=forms.EmailInput(attrs={
             'class': 'w-full px-4 py-3 border border-black rounded-none text-black placeholder-gray-500 focus:outline-none focus:border-black',
             'placeholder': 'Email',
@@ -25,70 +28,77 @@ class OrderForm(forms.Form):
         })
     )
     company = forms.CharField(
+        label='Компания',
         max_length=100,
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'w-full px-4 py-3 border border-black rounded-none text-black placeholder-gray-500 focus:outline-none focus:border-black',
-            'placeholder': 'Company (optional)'
+            'placeholder': 'Компания (необязательно)'
         })
     )
     address1 = forms.CharField(
+        label='Адрес',
         max_length=255,
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'w-full px-4 py-3 border border-black rounded-none text-black placeholder-gray-500 focus:outline-none focus:border-black pr-10',
-            'placeholder': 'Address Line 1'
+            'placeholder': 'Адрес (улица, дом)'
         })
     )
     address2 = forms.CharField(
+        label='Дополнительный адрес',
         max_length=255,
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'w-full px-4 py-3 border border-black rounded-none text-black placeholder-gray-500 focus:outline-none focus:border-black',
-            'placeholder': 'Address Line 2 (optional)'
+            'placeholder': 'Дополнительная информация (необязательно)'
         })
     )
     city = forms.CharField(
+        label='Город',
         max_length=100,
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'w-full px-4 py-3 border border-black rounded-none text-black placeholder-gray-500 focus:outline-none focus:border-black',
-            'placeholder': 'City'
+            'placeholder': 'Город'
         })
     )
     country = forms.CharField(
+        label='Страна',
         max_length=100,
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'w-full px-4 py-3 border border-black rounded-none text-black placeholder-gray-500 focus:outline-none focus:border-black',
-            'placeholder': 'Country'
+            'placeholder': 'Страна'
         })
     )
     province = forms.CharField(
+        label='Регион / Область',
         max_length=100,
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'w-full px-4 py-3 border border-black rounded-none text-black placeholder-gray-500 focus:outline-none focus:border-black',
-            'placeholder': 'State/Province'
+            'placeholder': 'Регион / Область'
         })
     )
     postal_code = forms.CharField(
+        label='Почтовый индекс',
         max_length=20,
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'w-full px-4 py-3 border border-black rounded-none text-black placeholder-gray-500 focus:outline-none focus:border-black',
-            'placeholder': 'Postal Code'
+            'placeholder': 'Почтовый индекс'
         })
     )
     phone = forms.CharField(
+        label='Телефон',
         max_length=15,
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'w-full px-4 py-3 border border-black rounded-none text-black placeholder-gray-500 focus:outline-none focus:border-black pr-10',
-            'placeholder': 'Phone (optional)'
+            'placeholder': 'Телефон (необязательно)'
         })
     )
-
 
     def __init__(self, *args, user=None, **kwargs):
         super().__init__(*args, **kwargs)
@@ -105,12 +115,18 @@ class OrderForm(forms.Form):
             self.fields['postal_code'].initial = user.postal_code
             self.fields['phone'].initial = user.phone
 
-
     def clean(self):
         cleaned_data = super().clean()
-        for field in ['company', 'address1', 'address2', 'city', 
-                      'country', 'province', 'postal_code', 'phone']:
+        for field in [
+            'company',
+            'address1',
+            'address2',
+            'city',
+            'country',
+            'province',
+            'postal_code',
+            'phone',
+        ]:
             if cleaned_data.get(field):
                 cleaned_data[field] = strip_tags(cleaned_data[field])
         return cleaned_data
-    

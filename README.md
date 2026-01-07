@@ -362,9 +362,22 @@ sudo certbot --nginx -d domen.com -d www.domen.com
 ```bash
 docker compose -f docker-compose.dev.yml down -v
 docker compose -f docker-compose.dev.yml up --build
+docker compose -f docker-compose.dev.yml build --no-cache
 docker compose -f docker-compose.dev.yml exec web python manage.py migrate
 ```
+```bash
+# ОБЯЗАТЕЛЬНАЯ пересборка (правильно)
+docker compose -f docker-compose.dev.yml down -v
+docker compose -f docker-compose.dev.yml build --no-cache
+docker compose -f docker-compose.dev.yml up -d
 
+# Контрольная проверка (после сборки)
+docker exec -it enf-web-1 python manage.py shell
+# Пример:
+from PIL import features
+features.check("webp")
+features.check("avif")
+```
 ---
 
 ## ✅ Чек-лист запуска «без сюрпризов»
