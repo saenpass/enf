@@ -216,6 +216,13 @@ POSTGRES_HOST=127.0.0.1
 POSTGRES_PORT=5432
 ```
 
+docker compose exec web python manage.py makemigrations
+docker compose exec web python manage.py migrate
+docker compose exec web python manage.py createsuperuser
+docker compose exec web python manage.py check
+docker compose exec web python manage.py collectstatic --noinput
+docker exec -it enf-web-1 python manage.py shell
+docker compose logs
 ---
 
 ## ⚙️ Настройки Django (Dev/Prod)
@@ -292,6 +299,8 @@ POSTGRES_PORT=5432
 ### `docker-compose.dev.yml` (рекомендуемый dev)
 
 * `web` запускается через `runserver` для быстрой разработки
+*  docker compose -f docker-compose.dev.yml up -d
+*  docker compose -f docker-compose.dev.yml build --no-cache
 * `db` — PostgreSQL
 * том для postgres сохраняет данные между перезапусками
 
